@@ -17,6 +17,7 @@ pub enum Category {
     Transfer,
     Pay,
     Fuel,
+    University,
     Other,
 }
 

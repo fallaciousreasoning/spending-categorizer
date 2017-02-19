@@ -4,23 +4,23 @@
         "category":"Supermarket"
     },
     {
-        "pattern":"AMAZON",
+        "pattern":"(?i)AMAZON",
         "category":"Amazon"
     },
     {
-        "pattern":"KINDLE",
+        "pattern":"(?i)KINDLE",
         "category":"Books"
     },
     {
-        "pattern":"PALMS|HOYTS|EVENT|CINEMA",
+        "pattern":"(?i)PALMS|HOYTS|EVENT|CINEMA",
         "category":"Movies"
     },
     {
-        "pattern":"TRANSFER",
+        "pattern":"(?i)TRANSFER",
         "category":"Transfer"
     },
     {
-        "pattern":"TRANSPORT|AT HOP|FERRRY|UBER|BUS|FERRY|FULLERS",
+        "pattern":"(?i)TRANSPORT|AT HOP|FERRRY|UBER|BUS|FERRY|FULLERS",
         "category":"Transport"
     },
     {
@@ -30,5 +30,9 @@
     {
         "pattern":"FUEL| Z|SHELL|BP",
         "category":"Fuel"
+    },
+    {
+        "pattern":"(?i)CANTERBURY|UNIVERSITY|HKUST|UNI|CANTY|51470770",
+        "category":"University"
     }
 ]
