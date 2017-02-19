@@ -85,7 +85,7 @@ impl Analysis {
 type Categorizer = Box<Fn(&String) -> Option<Category>>;
 
 
-pub fn defaultCategorizers() -> Vec<Categorizer> {
+pub fn default_categorizers() -> Vec<Categorizer> {
     let mut result : Vec<Categorizer> = vec![];
 
     result.push(regex_mapping(r"(NEW WORLD)|(COUNTDOWN)|(PAKNSAVE)", Category::Supermarket));

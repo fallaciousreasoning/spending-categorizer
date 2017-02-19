@@ -7,7 +7,7 @@ mod analyser;
 fn main() {
     let mut rdr = csv::Reader::from_file("C:/Users/Jay Harris/OneDrive/Documents/Projects/spending-categorizer/data/statement.csv").unwrap();
     let statement_rows : Vec<statement::StatementRow> = rdr.decode().map(|record| record.unwrap()).collect();
-    let categorizers = analyser::defaultCategorizers();
+    let categorizers = analyser::default_categorizers();
     let analyser = analyser::Analysis::new(&statement_rows, categorizers);
 
     for category in analyser.all_categories() {
