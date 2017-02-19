@@ -26,5 +26,9 @@
     {
         "pattern":"Direct Credit HWI LTD TRUST ACC|PAYMENT|Payment",
         "category":"Pay"
+    },
+    {
+        "pattern":"FUEL| Z|SHELL|BP",
+        "category":"Fuel"
     }
 ]

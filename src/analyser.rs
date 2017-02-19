@@ -16,6 +16,7 @@ pub enum Category {
     Books,
     Transfer,
     Pay,
+    Fuel,
     Other,
 }
 
