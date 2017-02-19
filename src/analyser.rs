@@ -9,10 +9,14 @@ use statement;
 #[derive(RustcDecodable, Debug, Clone, Hash, Eq, PartialEq)]
 pub enum Category {
     Supermarket,
+    Food,
     Movies,
     Transport,
     Amazon,
-    Books
+    Books,
+    Transfer,
+    Pay,
+    Other,
 }
 
 #[derive(RustcDecodable, Clone)]
@@ -57,7 +61,11 @@ impl Analysis {
     fn add_statement(&mut self, row : &statement::StatementRow) {
         let categories : Vec<Option<Category>>;
         { 
-            categories = self.categorizers.iter().map(|c| c(&row.description)).collect();
+            categories = self.categorizers.iter().map(|c| c(&row.description)).filter(|c| c.is_some()).collect();
+        }
+
+        if categories.len() == 0 {
+            self.set_row(row, Category::Other);
         }
 
         for category in categories {

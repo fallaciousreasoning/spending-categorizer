@@ -12,6 +12,6 @@ fn main() {
 
     for category in analyser.all_categories() {
         println!("{:?}", category);
-        println!("\tSpent {}", analyser.total_spent(category));
+        println!("\tTotal {}", analyser.total_spent(category));
     }
 }

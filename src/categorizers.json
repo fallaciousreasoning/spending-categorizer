@@ -14,5 +14,17 @@
     {
         "pattern":"PALMS|HOYTS|EVENT|CINEMA",
         "category":"Movies"
+    },
+    {
+        "pattern":"TRANSFER",
+        "category":"Transfer"
+    },
+    {
+        "pattern":"TRANSPORT|AT HOP|FERRRY|UBER",
+        "category":"Transport"
+    },
+    {
+        "pattern":"Direct Credit HWI LTD TRUST ACC|PAYMENT|Payment",
+        "category":"Pay"
     }
 ]
