@@ -1,0 +1,8 @@
+[package]
+name = "money"
+version = "0.1.0"
+authors = ["jayharris"]
+
+[dependencies]
+csv = "0.14"
+rustc-serialize = "0.3.22"
