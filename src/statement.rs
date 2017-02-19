@@ -1,4 +1,4 @@
-#[derive(RustcDecodable)]
+#[derive(RustcDecodable, Clone)]
 pub struct StatementRow {
     pub account : String,
     pub date : String,

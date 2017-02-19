@@ -5,19 +5,12 @@ mod statement;
 mod analyser;
 
 fn main() {
-    let mut rdr = csv::Reader::from_file("/Users/jayharris/money/data/statement.csv").unwrap();
+    let mut rdr = csv::Reader::from_file("C:/Users/Jay Harris/OneDrive/Documents/Projects/spending-categorizer/data/statement.csv").unwrap();
+    let statementRows : Vec<statement::StatementRow> = rdr.decode().map(|record| record.unwrap()).collect();
+    let categorizers = analyser::defaultCategorizers();
+    let analyser = analyser::Analysis::new(&statementRows, categorizers);
     
-    for record in rdr.decode() {
-        let row : statement::StatementRow = record.unwrap();
-        let description = row.description.to_string();
-        let categorizers = analyser::initDefaultCategorizers();
-        let result = analyser::categorize(row.description, categorizers);
-        let len = result.len();
-
-        for category in result {
-            print!("{} -> {:?}, ", description, category);
-        }
-        
-        if len > 0 { println!(); }
+    for statement in analyser.get_statements(analyser::Category::Supermarket).unwrap() {
+        println!("Spent {} at {}", -statement.total_amount, statement.description);
     }
 }

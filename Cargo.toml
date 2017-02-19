@@ -6,3 +6,4 @@ authors = ["jayharris"]
 [dependencies]
 csv = "0.14"
 rustc-serialize = "0.3.22"
+regex = "0.2"
