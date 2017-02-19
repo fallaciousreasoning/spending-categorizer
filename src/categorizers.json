@@ -20,7 +20,7 @@
         "category":"Transfer"
     },
     {
-        "pattern":"TRANSPORT|AT HOP|FERRRY|UBER",
+        "pattern":"TRANSPORT|AT HOP|FERRRY|UBER|BUS|FERRY|FULLERS",
         "category":"Transport"
     },
     {
