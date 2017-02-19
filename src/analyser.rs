@@ -15,12 +15,14 @@ pub enum Category {
 
 pub struct Analysis {
     categories : HashMap<Category, Vec<statement::StatementRow>>,
-    categorizers : Vec<Categorizer>
+    all_categories : Vec<Category>,
+    categorizers : Vec<Categorizer>,
 }
 
 impl Analysis {
     pub fn new(rows : &Vec<statement::StatementRow>, categorizers : Vec<Categorizer>) -> Analysis {
-        let mut result = Analysis { 
+        let mut result = Analysis {
+            all_categories: vec![],
             categories: HashMap::new(),
             categorizers: categorizers
         };
@@ -35,6 +37,7 @@ impl Analysis {
     fn set_row(&mut self, row : &statement::StatementRow, category : Category) {
         if !self.categories.contains_key(&category) {
             self.categories.insert(category.clone(), vec![]);
+            self.all_categories.push(category.clone());
         }
 
         match self.categories.get_mut(&category) {
@@ -57,16 +60,25 @@ impl Analysis {
         }
     }
 
-    pub fn get_statements(&self, category : Category) -> Option<&Vec<statement::StatementRow>> {
-        if !self.categories.contains_key(&category) {
+    pub fn get_statements(&self, category : &Category) -> Option<&Vec<statement::StatementRow>> {
+        if !self.categories.contains_key(category) {
             return None;
         }
 
-        return Option::Some(&self.categories[&category]);
+        return Option::Some(&self.categories[category]);
+    }
+
+    pub fn total_spent(&self, category : &Category) -> f32 {
+        let sum : f32 = self.get_statements(category).unwrap().iter().map(|r| r.total_amount).sum();
+        return sum;
     }
 
     pub fn all(&self) -> &HashMap<Category, Vec<statement::StatementRow>> {
         return &self.categories;
+    }
+
+    pub fn all_categories(&self) -> &Vec<Category> {
+        return &self.all_categories;
     }
 }
 
