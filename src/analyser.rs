@@ -1,16 +1,24 @@
 extern crate regex;
 
+use rustc_serialize::json;
+use std::fs::File;
+use std::io::Read;
 use std::collections::HashMap;
-
 use statement;
 
-#[derive(Debug, Clone, Hash, Eq, PartialEq)]
+#[derive(RustcDecodable, Debug, Clone, Hash, Eq, PartialEq)]
 pub enum Category {
     Supermarket,
     Movies,
     Transport,
     Amazon,
     Books
+}
+
+#[derive(RustcDecodable, Clone)]
+struct CategoryMatcher {
+    category: Category,
+    pattern: String
 }
 
 pub struct Analysis {
@@ -92,6 +100,25 @@ pub fn default_categorizers() -> Vec<Categorizer> {
 
     result.push(contains_mapping("KINDLE", Category::Books));
     result.push(contains_mapping("AMAZON", Category::Amazon));
+
+    return result;
+}
+
+pub fn from_json_file(file_name : &str) -> Vec<Categorizer> {
+    let mut file = File::open(file_name).unwrap();
+    let mut json_string = String::new();
+    file.read_to_string(&mut json_string);
+
+    return from_json(&json_string[..]);
+}
+
+fn from_json(json_string : &str) -> Vec<Categorizer> {
+    let decoded : Vec<CategoryMatcher> = json::decode(json_string).unwrap();
+    let mut result = vec![];
+
+    for matcher in decoded {
+        result.push(regex_mapping(&matcher.pattern[..], matcher.category));
+    }
 
     return result;
 }

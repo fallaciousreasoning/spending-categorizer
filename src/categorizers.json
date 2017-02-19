@@ -1,18 +1,18 @@
 [
     {
-        "match":"NEW WORLD|COUNTDOWN|PAKNSAVE",
+        "pattern":"NEW WORLD|COUNTDOWN|PAKNSAVE",
         "category":"Supermarket"
     },
     {
-        "match":"AMAZON",
+        "pattern":"AMAZON",
         "category":"Amazon"
     },
     {
-        "match":"KINDLE",
+        "pattern":"KINDLE",
         "category":"Books"
     },
     {
-        "match":"PALMS|HOYTS|EVENT|CINEMA",
+        "pattern":"PALMS|HOYTS|EVENT|CINEMA",
         "category":"Movies"
     }
 ]
