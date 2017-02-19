@@ -1,0 +1,18 @@
+[
+    {
+        "match":"NEW WORLD|COUNTDOWN|PAKNSAVE",
+        "category":"Supermarket"
+    },
+    {
+        "match":"AMAZON",
+        "category":"Amazon"
+    },
+    {
+        "match":"KINDLE",
+        "category":"Books"
+    },
+    {
+        "match":"PALMS|HOYTS|EVENT|CINEMA",
+        "category":"Movies"
+    }
+]
